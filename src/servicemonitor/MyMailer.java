@@ -17,7 +17,7 @@ public class MyMailer {
 		// Sender's email and info
 		String from = "crazyokuni@gmail.com";
 		final String username = "crazyokuni@gmail.com";
-		final String password = "crazyokuni1991";
+		final String password = "******";
 
 		// Sending email through relay.jangosmtp.net
 		String host = "smtp.gmail.com";
