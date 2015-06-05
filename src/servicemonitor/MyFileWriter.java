@@ -38,7 +38,7 @@ public class MyFileWriter {
 					}
 					System.out.println("Writing to file");
 					bufferWriter.flush();
-					Thread.sleep(30000);
+					Thread.sleep(15000);
 				}
 			}
 //			System.out.println("done");

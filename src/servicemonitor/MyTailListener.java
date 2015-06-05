@@ -11,8 +11,13 @@ public class MyTailListener extends TailerListenerAdapter {
 	public void handle(String line) {
 //		System.out.println(line);
 		String match = "Exception";
-		if(line.contains(match))
+		if(line.contains(match)) {
 			System.out.println("Send Alert");
+			System.out.println(line);
+			
+//			MyMailer mailer = new MyMailer();
+//			mailer.main();
+		}
 	}
 
 	public static void main(String[] arg) {
