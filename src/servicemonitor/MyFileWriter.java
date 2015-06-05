@@ -7,6 +7,8 @@ import java.io.IOException;
 
 public class MyFileWriter {
 
+	
+	// Emulates a log file for a service
 	public void writetoFile() {
 		String data = "hello";
 		int count = 0;
@@ -18,16 +20,19 @@ public class MyFileWriter {
 			File file = new File("log.txt");
 			FileWriter fileWriter = new FileWriter(file, true);
 			BufferedWriter bufferWriter = new BufferedWriter(fileWriter);
+			// Header for start of log file
 			if (file.length() == 0)
 				bufferWriter.append(start + "\n");
 
 			if (file.exists()) {
 				while (true) {
 					StringBuilder sb = new StringBuilder();
+					//Don't add a counter to string when less than 2
 					if (count < 2) {
 						sb.append(data + "\n");
 						bufferWriter.append(sb);
 						count++;
+						// Print an exception every 3rd write
 					} else if(count%3==0){
 						sb.append(data+(count++)+"\n");
 						bufferWriter.append(sb);
@@ -36,8 +41,9 @@ public class MyFileWriter {
 						sb.append(data+(count++)+"\n");
 						bufferWriter.append(sb);
 					}
-					System.out.println("Writing to file");
+//					System.out.println("Writing to file");
 					bufferWriter.flush();
+					//Writes every 15 seconds
 					Thread.sleep(15000);
 				}
 			}
