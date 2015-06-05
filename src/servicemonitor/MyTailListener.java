@@ -6,17 +6,19 @@ import org.apache.commons.io.input.Tailer;
 import org.apache.commons.io.input.TailerListener;
 import org.apache.commons.io.input.TailerListenerAdapter;
 
+/**
+ * @author Theo
+ * TailFileReader using Apache Commons Tailer implementation of -tail f function
+ * reads from the tail of a log file for an exception
+ * and calls MyMailer to send an alert when exception is read
+ */
 public class MyTailListener extends TailerListenerAdapter {
 
 	public void handle(String line) {
-//		System.out.println(line);
 		String match = "Exception";
 		if(line.contains(match)) {
-			System.out.println("Send Alert");
 			System.out.println(line);
-			
-//			MyMailer mailer = new MyMailer();
-//			mailer.main();
+//			MyMailer.main(null);
 		}
 	}
 
