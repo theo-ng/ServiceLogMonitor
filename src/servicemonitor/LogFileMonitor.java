@@ -1,7 +1,6 @@
 package servicemonitor;
 
 import java.io.File;
-
 import org.apache.commons.io.input.Tailer;
 import org.apache.commons.io.input.TailerListener;
 import org.apache.commons.io.input.TailerListenerAdapter;
@@ -12,13 +11,14 @@ import org.apache.commons.io.input.TailerListenerAdapter;
  * reads from the tail of a log file for an exception
  * and calls MyMailer to send an alert when exception is read
  */
-public class MyTailListener extends TailerListenerAdapter {
+public class LogFileMonitor extends TailerListenerAdapter {
 
 	public void handle(String line) {
 		String match = "Exception";
 		if(line.contains(match)) {
-			System.out.println(line);
-//			MyMailer.main(null);
+//			System.out.println(line);
+			ExceptionAlertMailer mymailer = new ExceptionAlertMailer(line);
+			mymailer.sendMail();
 		}
 	}
 
@@ -26,7 +26,7 @@ public class MyTailListener extends TailerListenerAdapter {
 		File log = new File("log.txt");
 
 		try {
-			TailerListener listener = new MyTailListener();
+			TailerListener listener = new LogFileMonitor();
 			Tailer tailer = new Tailer(log, listener, 500);
 			Thread thread = new Thread(tailer);
 			thread.start();

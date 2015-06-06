@@ -7,7 +7,3 @@ Found Null pointer Exception--
 Line number 664
 hello4
 hello5
-hello6
-Found Null pointer Exception--
-Line number 664
-hello7

@@ -5,10 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class MyFileWriter {
+public class LogFileEmulator {
 
 	
-	// Emulates a log file for a service
+	// Mimics a log file for a service
 	public void writetoFile() {
 		String data = "hello";
 		int count = 0;
@@ -43,8 +43,8 @@ public class MyFileWriter {
 					}
 //					System.out.println("Writing to file");
 					bufferWriter.flush();
-					//Writes every 15 seconds
-					Thread.sleep(15000);
+					//Writes every 10 seconds
+					Thread.sleep(10000);
 				}
 			}
 //			System.out.println("done");
@@ -56,7 +56,7 @@ public class MyFileWriter {
 	}
 
 	public static void main(String[] a) {
-		MyFileWriter mfw = new MyFileWriter();
+		LogFileEmulator mfw = new LogFileEmulator();
 		mfw.writetoFile();
 	}
 

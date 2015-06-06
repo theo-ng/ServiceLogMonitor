@@ -8,16 +8,22 @@ import javax.mail.internet.*;
  * @author Theo
  * Mailer class to send alert using Gmail STMP.
  */
-public class MyMailer {
+public class ExceptionAlertMailer {
+	
+	private String exceptionMsg;
+	
+	public ExceptionAlertMailer(String exceptionMsg) {
+		this.exceptionMsg = exceptionMsg;
+	}
 
-	public static void main(String[] args) {
+	public void sendMail() {
 		// Recipient's email
 		String to = "theodore.n.ng@gmail.com";
 
 		// Sender's email and info
 		String from = "crazyokuni@gmail.com";
 		final String username = "crazyokuni@gmail.com";
-		final String password = "******";
+		final String password = "*****";
 
 		// Sending email through relay.jangosmtp.net
 		String host = "smtp.gmail.com";
@@ -52,7 +58,8 @@ public class MyMailer {
 
 			// Now set the actual message
 			message.setText("Hello, this is automatically generated alert "
-					+ "as an exception has been found in log.txt");
+					+ "as an exception has been found in log.txt as follows...\n"
+					+ exceptionMsg);
 
 			// Send message
 			Transport.send(message);
